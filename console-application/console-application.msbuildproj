@@ -1,14 +1,11 @@
-﻿<Project Sdk="Peachpie.NET.Sdk/0.9.800">
-
+﻿<Project Sdk="Peachpie.NET.Sdk/1.0.6">
   <PropertyGroup>
     <OutputType>exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFramework>net5.0</TargetFramework>
+    <StartupObject>main.php</StartupObject>
   </PropertyGroup>
-
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <Compile Include="**/*.php;*.phar" />
+    <Content Include="**/*.json" Exclude=".*/**;bin/**;obj/**;" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
-  
 </Project>

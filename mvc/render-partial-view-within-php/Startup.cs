@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Pchp.Core;
 using Peachpie.AspNetCore.Web;
 
@@ -19,9 +20,10 @@ namespace Demo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddPhp();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -31,7 +33,7 @@ namespace Demo
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UsePhp(new PhpRequestOptions(scriptAssemblyName: typeof(User).Assembly.FullName));
+            app.UsePhp();
         }
     }
 }
